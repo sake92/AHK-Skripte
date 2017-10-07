@@ -4,7 +4,12 @@
 
 ;Launch VS Code in current folder
 ; Win key + c
-#c::RunWait, %comspec% /c code . ,,Hide
+#c::
+  WinActivate, ahk_class CabinetWClass
+  ControlGetText, currDir, Edit1, ahk_class CabinetWClass
+  SetWorkingDir %currDir%
+  Run, %comspec% /c "code .",,Hide
+Return
 
 ;Launch GIMP
 ; Win key + g
